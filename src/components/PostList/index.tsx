@@ -1,5 +1,4 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 import { Post } from "../../types/post.d";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -15,7 +14,12 @@ const PostList = ({ posts }: Props) => {
             </Typography>
 
             {posts.map((post, index) => (
-                <a key={post.id} href={post.postUrl} target="_blank" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                    key={post.id}
+                    href={`https://www.reddit.com${post.postUrl}`}
+                    target="_blank"
+                    style={{ textDecoration: "none", color: "black" }}
+                >
                     <Grid container sx={{ color: "text.primary", mb: 2 }}>
                         <Grid
                             item
@@ -27,7 +31,10 @@ const PostList = ({ posts }: Props) => {
                                 justifyContent: "center",
                             }}
                         >
-                            <Typography variant="h6">{post.communityTitle}</Typography>
+                            <Typography variant="h6">
+                                Reddit
+                                {/* {post.communityTitle} */}
+                            </Typography>
                         </Grid>
                         <Grid item xs={8} sx={{ display: "flex", alignItems: "center" }}>
                             <div>

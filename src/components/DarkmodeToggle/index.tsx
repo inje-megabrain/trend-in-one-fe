@@ -1,6 +1,5 @@
 import { Switch } from "@mui/material";
 import { useAtom } from "jotai";
-import { useContext } from "react";
 import { darkModeAtom } from "../../state/darkmode";
 
 const DarkmodeToggle = () => {

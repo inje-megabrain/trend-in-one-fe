@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Layout from "./components/Layout";
 import PostList from "./components/PostList";
-import data from "./data";
 import { useAtom } from "jotai";
 import { darkModeAtom } from "./state/darkmode";
+import { useQuery } from "react-query";
+import getPosts from "./api/getPosts";
 
 export default function App() {
     const [toggleDark, settoggleDark] = useAtom(darkModeAtom);
-
     const myTheme = createTheme({
         // Theme settings
         palette: {
@@ -22,12 +22,12 @@ export default function App() {
             },
         },
     });
-
+    const { isLoading, data } = useQuery(["posts"], getPosts, {
+        refetchOnWindowFocus: false,
+    });
     return (
         <ThemeProvider theme={myTheme}>
-            <Layout>
-                <PostList posts={data} />
-            </Layout>
+            <Layout>{!isLoading && <PostList posts={data} />}</Layout>
         </ThemeProvider>
     );
 }
