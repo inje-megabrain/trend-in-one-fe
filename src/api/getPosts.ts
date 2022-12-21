@@ -1,15 +1,18 @@
 import axios from "axios";
 
-const getPosts = async () => {
+const getPosts = async ({ pageParam = 1 }) => {
     try {
-        const result = await axios.get("http://localhost:13000/posts", {
+        const result = await axios.get(`http://localhost:13000/posts?page=${pageParam}&limit=10`, {
             headers: {
                 "Content-Type": "application/json",
             },
             withCredentials: true,
         });
-        console.log(result);
-        return result.data;
+        return {
+            post_page: result.data.items,
+            current_page: result.data.meta.currentPage,
+            totalPages: result.data.meta.totalPages,
+        };
     } catch (error) {
         return Promise.reject(error);
     }

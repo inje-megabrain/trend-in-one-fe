@@ -1,86 +1,56 @@
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { FetchNextPageOptions, InfiniteData } from "react-query";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import PostCard from "../PostCard";
 import { Post } from "../../types/post.d";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ImageSelector from "../utils/ImageSelectorComponent";
+
 type Props = {
-    posts: Post[];
+    getPost:
+        | InfiniteData<{
+              post_page: Post[];
+              current_page: number;
+              totalPages: number;
+          }>
+        | undefined;
+    getNextPage: (options?: FetchNextPageOptions | undefined) => Promise<any>;
+    getPostIsSuccess: boolean;
+    getNextPageIsPossible: boolean | undefined;
+    getIsLoading: boolean;
 };
 
-const PostList = ({ posts }: Props) => {
+const PostList = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible }: Props) => {
+    const [ref, isView] = useInView();
+    useEffect(() => {
+        if (isView && getNextPageIsPossible) {
+            getNextPage();
+        }
+    }, [isView, getPost]);
     return (
         <Box>
             <Typography variant="h4" sx={{ fontWeight: 700, mt: 5, mb: 4, textAlign: "center", color: "text.primary" }}>
                 Today's Trend
             </Typography>
-
-            {posts.map((post, index) => (
-                <a
-                    key={post.id}
-                    href={`https://www.reddit.com${post.postUrl}`}
-                    target="_blank"
-                    style={{ textDecoration: "none", color: "black" }}
-                >
-                    <Grid container sx={{ color: "text.primary" }}>
-                        <Grid
-                            item
-                            xs={1}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                mr: 2,
-                            }}
-                        >
-                            <h3>{index + 1}</h3>
-                        </Grid>
-                        <Grid
-                            item
-                            xs={1}
-                            sx={{ mr: 4, display: "flex", alignItems: "center", justifyContent: "center" }}
-                        >
-                            <div
-                                style={{
-                                    height: "15vh",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <ImageSelector communityTitle={"Reddit"} />
-                            </div>
-                        </Grid>
-                        <Grid item xs={7.5} sx={{ display: "flex", alignItems: "center" }}>
-                            <div>
-                                <h2 className="name text-dark">{post.title}</h2>
-                                <span>{post.uploadedAt.toLocaleString()}</span>
-                            </div>
-                        </Grid>
-                        <Grid
-                            item
-                            xs={1}
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <Grid item xs={8} sx={{ display: "flex", alignItems: "center", ml: 2 }}>
-                                <div>
-                                    <Typography>
-                                        <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:
-                                        {post.views}
-                                    </Typography>
-                                    <Typography>
-                                        <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.likes}
-                                    </Typography>
+            {getPostIsSuccess &&
+                getPost!.pages &&
+                getPost?.pages.map((post, page_num) => {
+                    const post_page = post.post_page;
+                    return post_page.map((item: any, index: number) => {
+                        if (getPost.pages.length - 1 === page_num && post_page.length - 1 === index) {
+                            return (
+                                <div ref={ref} key={item.id}>
+                                    <PostCard post={item} />
                                 </div>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Divider />
-                </a>
-            ))}
+                            );
+                        } else {
+                            return (
+                                <div key={item.id}>
+                                    <PostCard post={item} />
+                                </div>
+                            );
+                        }
+                    });
+                })}
         </Box>
     );
 };
