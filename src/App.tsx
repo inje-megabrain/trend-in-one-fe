@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Layout from "./components/Layout";
 import PostList from "./components/PostList";
 import { useAtom } from "jotai";
 import { darkModeAtom } from "./state/darkmode";
-import { useQuery } from "react-query";
-import getPosts from "./api/getPosts";
+import useGetPostInfiniteScrollQuery from "./query/useGetPostInfiniteScrollQuery";
 
 export default function App() {
     const [toggleDark, settoggleDark] = useAtom(darkModeAtom);
@@ -22,12 +21,11 @@ export default function App() {
             },
         },
     });
-    const { isLoading, data } = useQuery(["posts"], getPosts, {
-        refetchOnWindowFocus: false,
-    });
+    const scrollQueryProps = useGetPostInfiniteScrollQuery();
+
     return (
         <ThemeProvider theme={myTheme}>
-            <Layout>{!isLoading && <PostList posts={data} />}</Layout>
+            <Layout>{!scrollQueryProps.getIsLoading && <PostList {...scrollQueryProps} />}</Layout>
         </ThemeProvider>
     );
 }
