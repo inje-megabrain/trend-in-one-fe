@@ -24,8 +24,18 @@ const MiniPostCard = ({ post, index, lastIndex = 9999 }: Props) => {
                 </h3>
                 <Box sx={{ mt: -2 }}>
                     <h5>
-                        <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} /> {post.views}
-                        <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} /> {post.likes}
+                        {post.views && (
+                            <>
+                                <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} />
+                                {post.views}
+                            </>
+                        )}
+                        &nbsp;
+                        {post.likes && (
+                            <>
+                                <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} /> {post.likes}
+                            </>
+                        )}
                     </h5>
                 </Box>
             </Box>
