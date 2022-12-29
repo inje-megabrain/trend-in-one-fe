@@ -9,3 +9,10 @@ export interface Post {
     uploadedAt: Date;
     communityTitle: string; // ENUM, Reddit, Twitter, dcinside
 }
+
+export interface TwitterTag {
+    name: string;
+    query: string;
+    tweet_volume: number | null;
+    url: string;
+}

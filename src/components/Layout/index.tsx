@@ -15,15 +15,17 @@ import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DarkmodeToggle from "../DarkmodeToggle";
-import { useTheme } from "@emotion/react";
-
+import { Link, useNavigate } from "react-router-dom";
 interface Props {
     window?: () => Window;
     children: any;
 }
 
 const drawerWidth = 240;
-const navItems = ["Home"];
+const navItems = [
+    { title: "Home", url: "/" },
+    { title: "Trends", url: "/trends" },
+];
 
 const useStyles = makeStyles(
     (theme: {
@@ -46,11 +48,12 @@ const useStyles = makeStyles(
 const Layout = (props: Props) => {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const theme = useTheme();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
     const classes = useStyles();
+    const navigate = useNavigate();
+    const handleOnClick = React.useCallback((url: string) => navigate(url, { replace: true }), [navigate]);
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -60,9 +63,14 @@ const Layout = (props: Props) => {
             <Divider />
             <List>
                 {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: "center" }}>
-                            <ListItemText primary={item} />
+                    <ListItem key={item.title} disablePadding>
+                        <ListItemButton
+                            sx={{ textAlign: "center" }}
+                            onClick={() => {
+                                handleOnClick(item.url);
+                            }}
+                        >
+                            <ListItemText primary={item.title} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -91,8 +99,14 @@ const Layout = (props: Props) => {
                         </Typography>
                         <Box sx={{ display: { xs: "none", sm: "block" } }}>
                             {navItems.map((item) => (
-                                <Button key={item} color="inherit">
-                                    {item}
+                                <Button
+                                    key={item.title}
+                                    color="inherit"
+                                    onClick={() => {
+                                        handleOnClick(item.url);
+                                    }}
+                                >
+                                    {item.title}
                                 </Button>
                             ))}
                         </Box>

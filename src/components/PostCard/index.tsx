@@ -9,11 +9,7 @@ type Props = {
 
 const PostCard = ({ post }: Props) => {
     return (
-        <a
-            href={`https://www.reddit.com${post.postUrl}`}
-            target="_blank"
-            style={{ textDecoration: "none", color: "black" }}
-        >
+        <a href={post.postUrl} target="_blank" style={{ textDecoration: "none", color: "black" }}>
             <Grid container sx={{ color: "text.primary" }}>
                 <Grid item xs={2} sx={{ mr: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div
@@ -24,7 +20,7 @@ const PostCard = ({ post }: Props) => {
                             justifyContent: "center",
                         }}
                     >
-                        <ImageSelector communityTitle={"Reddit"} />
+                        <ImageSelector communityTitle={post.communityTitle} />
                     </div>
                 </Grid>
                 <Grid item xs={8} sx={{ display: "flex", alignItems: "center" }}>
