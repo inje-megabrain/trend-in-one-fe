@@ -16,7 +16,7 @@ const TwitterTagCard = ({ post, index, lastIndex = 9999 }: Props) => {
                     </div>
                 </Grid>
                 <Grid item xs={1}>
-                    <h3 className="name text-dark">{post.tweet_volume ? post.tweet_volume : 0}</h3>
+                    <h3 className="name text-dark">{post.tweet_volume ? 0 : 0}</h3>
                 </Grid>
             </Grid>
             {index !== lastIndex - 1 && <Divider />}

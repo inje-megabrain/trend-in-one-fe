@@ -52,6 +52,17 @@ const HomeBanner = ({ communityTitle, subTitle }: Props) => {
                             display: "block",
                         }}
                     ></img>
+                ) : communityTitle === "Reddit" ? (
+                    <img
+                        src="assets/images/reddit-logo.webp"
+                        style={{
+                            objectFit: "cover",
+                            width: "60px",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            display: "block",
+                        }}
+                    ></img>
                 ) : (
                     <></>
                 )}
