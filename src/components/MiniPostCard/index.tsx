@@ -3,6 +3,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Post } from "../../types/post.d";
 import { Box } from "@mui/material";
+import { LinkTextH3 } from "../../styles/TextStyles.styles";
 type Props = {
     post: Post;
     index: number;
@@ -11,18 +12,23 @@ type Props = {
 
 const MiniPostCard = ({ post, index, lastIndex = 9999 }: Props) => {
     return (
-        <a href={post.postUrl} target="_blank" style={{ textDecoration: "none", color: "black" }}>
-            <Box sx={{ color: "text.primary", height: "70px" }}>
-                <h3
-                    style={{
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                    }}
-                >
-                    {post.title}
-                </h3>
-                <Box sx={{ mt: -2 }}>
+        <>
+            <Box sx={{ height: "70px" }}>
+                <a href={post.postUrl} target="_blank" style={{ textDecoration: "none" }}>
+                    <Box sx={{ color: "text.primary" }}>
+                        <LinkTextH3
+                            style={{
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            {post.title}
+                        </LinkTextH3>
+                    </Box>
+                </a>
+
+                <Box sx={{ mt: -2, color: "text.secondary" }}>
                     <h5>
                         {post.views && (
                             <>
@@ -40,7 +46,7 @@ const MiniPostCard = ({ post, index, lastIndex = 9999 }: Props) => {
                 </Box>
             </Box>
             {index !== lastIndex - 1 && <Divider />}
-        </a>
+        </>
     );
 };
 

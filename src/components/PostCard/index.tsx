@@ -40,12 +40,16 @@ const PostCard = ({ post }: Props) => {
                 >
                     <Grid item xs={8} sx={{ display: "flex", alignItems: "center", ml: 2 }}>
                         <div>
-                            <Typography>
-                                <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.views}
-                            </Typography>
-                            <Typography>
-                                <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.likes}
-                            </Typography>
+                            {post.views && (
+                                <Typography>
+                                    <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.views}
+                                </Typography>
+                            )}
+                            {post.likes && (
+                                <Typography>
+                                    <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.likes}
+                                </Typography>
+                            )}
                         </div>
                     </Grid>
                 </Grid>
