@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DarkmodeToggle from "../DarkmodeToggle";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface Props {
     window?: () => Window;
     children: any;
@@ -81,7 +81,7 @@ const Layout = (props: Props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: "flex" }} className={classes.root}>
+        <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }} className={classes.root}>
             <AppBar component="nav" color="default">
                 <Container maxWidth="lg">
                     <Toolbar>
@@ -131,7 +131,7 @@ const Layout = (props: Props) => {
                     {drawer}
                 </Drawer>
             </Box>
-            <Container component="main" maxWidth="lg">
+            <Container component="main" maxWidth="lg" sx={{ flex: 1 }}>
                 <Toolbar />
                 {props.children}
             </Container>

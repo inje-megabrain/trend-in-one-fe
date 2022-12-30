@@ -35,6 +35,7 @@ export default function App() {
             },
             text: {
                 primary: toggleDark === "dark" ? "#FFF" : "#000",
+                secondary: toggleDark === "dark" ? "#bebebe" : "#4d4d4d",
             },
         },
     });
