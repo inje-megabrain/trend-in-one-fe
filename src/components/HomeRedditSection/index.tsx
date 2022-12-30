@@ -8,7 +8,7 @@ const HomeRedditSection = () => {
     const { data, isLoading } = useGetSpecificCommunityPosts("Reddit");
     return (
         <div>
-            <HomeBanner communityTitle="Reddit" />
+            <HomeBanner communityTitle="Reddit" url="reddit" />
             <Box sx={{ pl: 1, pr: 1 }}>
                 {!isLoading &&
                     data?.post_page.map((post: Post, index: number) => {

@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
+import { LinkTextH2 } from "../../styles/TextStyles.styles";
 
 type Props = {
     communityTitle: string;
-    subTitle?: string;
+    url?: string;
 };
 
-const HomeBanner = ({ communityTitle, subTitle }: Props) => {
+const HomeBanner = ({ communityTitle, url }: Props) => {
     return (
         <Box
             sx={{
@@ -20,75 +21,58 @@ const HomeBanner = ({ communityTitle, subTitle }: Props) => {
                 position: "relative",
             }}
         >
-            <div
-                style={{
-                    position: "absolute",
-                    top: "50%",
-                    margin: 0,
-                    transform: "translateY(-50%)",
-                    marginLeft: "30px",
-                    display: "flex",
-                }}
-            >
-                {communityTitle == "Twitter" ? (
-                    <img
-                        src="assets/images/twitter-logo.webp"
-                        style={{
-                            objectFit: "cover",
-                            width: "60px",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            display: "block",
-                        }}
-                    ></img>
-                ) : communityTitle === "DC Inside" ? (
-                    <img
-                        src="assets/images/dcinside-logo.webp"
-                        style={{
-                            objectFit: "cover",
-                            width: "60px",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            display: "block",
-                        }}
-                    ></img>
-                ) : communityTitle === "Reddit" ? (
-                    <img
-                        src="assets/images/reddit-logo.webp"
-                        style={{
-                            objectFit: "cover",
-                            width: "60px",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            display: "block",
-                        }}
-                    ></img>
-                ) : (
-                    <></>
-                )}
-                <Typography
-                    sx={{
-                        fontWeight: 700,
-                        margin: "auto",
-                        ml: "10px",
-                        color: "text.primary",
+            <a href={`/${url}`} target="_blank" style={{ textDecoration: "none" }}>
+                <div
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        margin: 0,
+                        transform: "translateY(-50%)",
+                        marginLeft: "30px",
+                        display: "flex",
                     }}
-                    variant="h5"
                 >
-                    {communityTitle}
-                </Typography>
-                <Typography
-                    sx={{
-                        fontWeight: 500,
-                        margin: "auto",
-                        ml: "10px",
-                        color: "text.primary",
-                    }}
-                    variant="h6"
-                >
-                    {subTitle}
-                </Typography>
-            </div>
+                    {communityTitle == "Twitter" ? (
+                        <img
+                            src="assets/images/twitter-logo.webp"
+                            style={{
+                                objectFit: "cover",
+                                width: "60px",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                display: "block",
+                            }}
+                        ></img>
+                    ) : communityTitle === "DC Inside" ? (
+                        <img
+                            src="assets/images/dcinside-logo.webp"
+                            style={{
+                                objectFit: "cover",
+                                width: "60px",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                display: "block",
+                            }}
+                        ></img>
+                    ) : communityTitle === "Reddit" ? (
+                        <img
+                            src="assets/images/reddit-logo.webp"
+                            style={{
+                                objectFit: "cover",
+                                width: "60px",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                display: "block",
+                            }}
+                        ></img>
+                    ) : (
+                        <></>
+                    )}
+                    <Box sx={{ color: "text.primary", margin: "auto" }}>
+                        <LinkTextH2>{communityTitle}</LinkTextH2>
+                    </Box>
+                </div>
+            </a>
         </Box>
     );
 };

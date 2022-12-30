@@ -20,6 +20,18 @@ export default function App() {
             path: "/trends",
             element: <Trends />,
         },
+        {
+            path: "/dcinside",
+            element: <></>,
+        },
+        {
+            path: "/twitter",
+            element: <></>,
+        },
+        {
+            path: "/reddit",
+            element: <></>,
+        },
     ]);
 
     const myTheme = createTheme({

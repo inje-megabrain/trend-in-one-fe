@@ -8,7 +8,7 @@ const HomeDCInsideSection = () => {
     const { data, isLoading } = useGetSpecificCommunityPosts("DC Inside");
     return (
         <div>
-            <HomeBanner communityTitle="DC Inside" />
+            <HomeBanner communityTitle="DC Inside" url="dcinside" />
             <Box sx={{ pl: 1, pr: 1 }}>
                 {!isLoading &&
                     data?.post_page.map((post: Post, index: number) => {

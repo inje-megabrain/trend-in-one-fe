@@ -8,21 +8,17 @@ const Home = () => {
     return (
         <Layout>
             <Container maxWidth="lg">
-                <Grid container sx={{ mt: 6 }} rowGap={6}>
-                    <Grid xs={5.5} item>
+                <Grid container sx={{ mt: 6 }} rowGap={6} columnSpacing={10}>
+                    <Grid xs={12} md={6} item>
                         <HomeTwitterSection />
                     </Grid>
-                    {/* dummy section */}
-                    <Grid xs={1}></Grid>
-                    <Grid xs={5.5} item>
+                    <Grid xs={12} md={6} item>
                         <HomeDCInsideSection />
                     </Grid>
-                    <Grid xs={5.5} item>
+                    <Grid xs={12} md={6} item>
                         <HomeRedditSection />
                     </Grid>
-                    {/* dummy section */}
-                    <Grid xs={1}></Grid>
-                    <Grid xs={5.5} item></Grid>
+                    <Grid xs={12} md={6} item></Grid>
                 </Grid>
             </Container>
         </Layout>
