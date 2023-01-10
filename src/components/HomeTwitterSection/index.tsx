@@ -8,7 +8,7 @@ const HomeTwitterSection = () => {
     const { data, isLoading } = useGetTwitterTags();
     return (
         <div>
-            <HomeBanner communityTitle="Twitter" url="twitter" />
+            <HomeBanner communityTitle="Twitter" subTitle="현재 트랜드" />
             <Box sx={{ pl: 1, pr: 1 }}>
                 {!isLoading &&
                     data

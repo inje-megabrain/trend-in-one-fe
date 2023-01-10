@@ -10,6 +10,17 @@ export interface Post {
     communityTitle: string; // ENUM, Reddit, Twitter, dcinside
 }
 
+export interface Video {
+    id: string;
+    videoId: string;
+    videoUrl: string;
+    title: string;
+    description: string;
+    thumbnailUri: string;
+    channelTitle: string;
+    uploadedAt: Date;
+}
+
 export interface TwitterTag {
     name: string;
     query: string;

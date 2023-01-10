@@ -7,12 +7,9 @@ type Props = {
 
 const getSpecificCommunityPosts = async ({ communityTitle, pageParam = 1 }: Props) => {
     try {
-        const result = await axios.get(`http://localhost:13000/posts/${communityTitle}?page=${pageParam}&limit=4`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            withCredentials: true,
-        });
+        const result = await axios.get(
+            `http://${process.env.REACT_APP_API_URL}/posts/${communityTitle}?page=${pageParam}&limit=10`,
+        );
         return {
             post_page: result.data.items,
             current_page: result.data.meta.currentPage,

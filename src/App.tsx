@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Trends from "./pages/Trends";
+import DCinsideSubPage from "./pages/DCinsideSubPage";
+import RedditSubPage from "./pages/RedditSubPage";
 
 export default function App() {
     const [toggleDark, settoggleDark] = useAtom(darkModeAtom);
@@ -22,7 +24,7 @@ export default function App() {
         },
         {
             path: "/dcinside",
-            element: <></>,
+            element: <DCinsideSubPage />,
         },
         {
             path: "/twitter",
@@ -30,7 +32,7 @@ export default function App() {
         },
         {
             path: "/reddit",
-            element: <></>,
+            element: <RedditSubPage />,
         },
     ]);
 
