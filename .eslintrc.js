@@ -23,5 +23,6 @@ module.exports = {
     },
     rules: {
         // 추가하고 싶은 rule을 더 추가해줍니다.
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
     },
 };
