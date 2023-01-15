@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import { FetchNextPageOptions, InfiniteData } from "react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import PostCard from "../PostCard";
-import { Post } from "../../types/post.d";
+import PostCard from "../../PostCard";
+import { Post } from "../../../types/post.d";
 
 type Props = {
     getPost:
@@ -19,7 +19,7 @@ type Props = {
     getIsLoading: boolean;
 };
 
-const PostList = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible }: Props) => {
+const Reddit = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible }: Props) => {
     const [ref, isView] = useInView();
     useEffect(() => {
         if (isView && getNextPageIsPossible) {
@@ -29,7 +29,7 @@ const PostList = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossibl
     return (
         <Box>
             <Typography variant="h4" sx={{ fontWeight: 700, mt: 5, mb: 4, textAlign: "center", color: "text.primary" }}>
-                Today's Trend
+                Reddit
             </Typography>
             {getPostIsSuccess &&
                 getPost!.pages &&
@@ -55,4 +55,4 @@ const PostList = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossibl
     );
 };
 
-export default PostList;
+export default Reddit;
