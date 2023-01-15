@@ -1,56 +1,60 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { FetchNextPageOptions, InfiniteData } from "react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import PostCard from "../../PostCard";
-import { Post } from "../../../types/post";
+import ThumbnailCard from "../../ThumbnailCard";
+import { Video } from "../../../types/post.d";
 
 type Props = {
-    getPost:
+    getVideo:
         | InfiniteData<{
-              post_page: Post[];
+              post_page: Video[];
               current_page: number;
               totalPages: number;
           }>
         | undefined;
-    getNextPage: (options?: FetchNextPageOptions | undefined) => Promise<any>;
-    getPostIsSuccess: boolean;
-    getNextPageIsPossible: boolean | undefined;
+    getNextVideo: (options?: FetchNextPageOptions | undefined) => Promise<any>;
+    getVideoIsSuccess: boolean;
+    getNextVideoIsPossible: boolean | undefined;
     getIsLoading: boolean;
 };
 
-const Youtube = ({ getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible }: Props) => {
+const Youtube = ({ getVideo, getNextVideo, getVideoIsSuccess, getNextVideoIsPossible }: Props) => {
     const [ref, isView] = useInView();
     useEffect(() => {
-        if (isView && getNextPageIsPossible) {
-            getNextPage();
+        console.log(isView, getNextVideoIsPossible);
+        if (isView && getNextVideoIsPossible) {
+            getNextVideo();
         }
-    }, [isView, getPost]);
+    }, [isView, getVideo]);
     return (
         <Box>
             <Typography variant="h4" sx={{ fontWeight: 700, mt: 5, mb: 4, textAlign: "center", color: "text.primary" }}>
-                디씨 인사이드
+                유튜브 인기 동영상
             </Typography>
-            {getPostIsSuccess &&
-                getPost!.pages &&
-                getPost?.pages.map((post, page_num) => {
-                    const post_page = post.post_page;
-                    return post_page.map((item: any, index: number) => {
-                        if (getPost.pages.length - 1 === page_num && post_page.length - 1 === index) {
-                            return (
-                                <div ref={ref} key={item.id}>
-                                    <PostCard post={item} />
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div key={item.id}>
-                                    <PostCard post={item} />
-                                </div>
-                            );
-                        }
-                    });
-                })}
+            <Grid container rowGap={3} columnSpacing={3}>
+                {getVideoIsSuccess &&
+                    getVideo!.pages &&
+                    getVideo?.pages.map((post, page_num) => {
+                        const post_page = post.post_page;
+                        return post_page.map((item: Video, index: number) => {
+                            if (getVideo.pages.length - 1 == page_num && post_page.length - 1 == index) {
+                                return (
+                                    // ?
+                                    <Grid item ref={ref} key={item.id} xs={4}>
+                                        <ThumbnailCard video={item} />
+                                    </Grid>
+                                );
+                            } else {
+                                return (
+                                    <Grid item key={item.id} xs={4}>
+                                        <ThumbnailCard video={item} />
+                                    </Grid>
+                                );
+                            }
+                        });
+                    })}
+            </Grid>
         </Box>
     );
 };

@@ -1,9 +1,9 @@
 import Layout from "../../components/Layout";
 import Reddit from "../../components/SubPage/Reddit";
-import useGetPostInfiniteScrollQuery from "../../query/useGetPostInfiniteScrollQuery";
+import useGetREDDITInfiniteScrollQuery from "../../query/useGetREDDITInfiniteScrollQuery";
 
 const RedditSubPage = () => {
-    const scrollQueryProps = useGetPostInfiniteScrollQuery("REDDIT");
+    const scrollQueryProps = useGetREDDITInfiniteScrollQuery();
 
     return <Layout>{!scrollQueryProps.getIsLoading && <Reddit {...scrollQueryProps} />}</Layout>;
 };

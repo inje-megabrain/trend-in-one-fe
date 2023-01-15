@@ -3,10 +3,10 @@ import getVideos from "../api/getVideos";
 
 const useGetVideosInfiniteScrollQuery = () => {
     const {
-        data: getPost,
-        fetchNextPage: getNextPage,
-        isSuccess: getPostIsSuccess,
-        hasNextPage: getNextPageIsPossible,
+        data: getVideo,
+        fetchNextPage: getNextVideo,
+        isSuccess: getVideoIsSuccess,
+        hasNextPage: getNextVideoIsPossible,
         isLoading: getIsLoading,
     } = useInfiniteQuery(["page_videos_list"], getVideos, {
         getNextPageParam: (value) => {
@@ -16,7 +16,7 @@ const useGetVideosInfiniteScrollQuery = () => {
         },
     });
 
-    return { getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible, getIsLoading };
+    return { getVideo, getNextVideo, getVideoIsSuccess, getNextVideoIsPossible, getIsLoading };
 };
 
 export default useGetVideosInfiniteScrollQuery;

@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import PostList from "../../components/PostList";
-import useGetPostInfiniteScrollQuery from "../../query/useGetPostInfiniteScrollQuery";
+import useGetPostInfiniteScrollQuery from "../../query/useGetDCINSIDEInfiniteScrollQuery";
 
 const Trends = () => {
     const scrollQueryProps = useGetPostInfiniteScrollQuery();

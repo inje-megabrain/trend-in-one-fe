@@ -1,9 +1,9 @@
 import Layout from "../../components/Layout";
 import DCinside from "../../components/SubPage/DCinside";
-import useGetPostInfiniteScrollQuery from "../../query/useGetPostInfiniteScrollQuery";
+import useGetDCINSIDEInfiniteScrollQuery from "../../query/useGetDCINSIDEInfiniteScrollQuery";
 
 const DCinsideSubPage = () => {
-    const scrollQueryProps = useGetPostInfiniteScrollQuery("DC_INSIDE");
+    const scrollQueryProps = useGetDCINSIDEInfiniteScrollQuery();
 
     return <Layout>{!scrollQueryProps.getIsLoading && <DCinside {...scrollQueryProps} />}</Layout>;
 };

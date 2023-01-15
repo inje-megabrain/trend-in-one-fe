@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const getVideos = async ({ pageParam = 1 }) => {
+type Props = {
+    pageParam?: number;
+};
+
+const getREDDITPosts = async ({ pageParam = 1 }: Props) => {
     try {
         const result = await axios.get(
-            `http://${process.env.REACT_APP_API_URL}/content/videos?page=${pageParam}&limit=10`,
+            `http://${process.env.REACT_APP_API_URL}/content/posts/REDDIT?page=${pageParam}&limit=10`,
         );
         return {
             post_page: result.data.items,
@@ -15,4 +19,4 @@ const getVideos = async ({ pageParam = 1 }) => {
     }
 };
 
-export default getVideos;
+export default getREDDITPosts;

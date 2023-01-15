@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Trends from "./pages/Trends";
 import DCinsideSubPage from "./pages/DCinsideSubPage";
 import RedditSubPage from "./pages/RedditSubPage";
+import ErrorPage from "./pages/404";
+import YoutubeSubPage from "./pages/YoutubeSubPage";
 
 export default function App() {
     const [toggleDark, settoggleDark] = useAtom(darkModeAtom);
@@ -17,22 +19,26 @@ export default function App() {
         {
             path: "/",
             element: <Home />,
+            errorElement: <ErrorPage />,
         },
         {
             path: "/trends",
             element: <Trends />,
+            errorElement: <ErrorPage />,
         },
         {
             path: "/dcinside",
             element: <DCinsideSubPage />,
-        },
-        {
-            path: "/twitter",
-            element: <></>,
+            errorElement: <ErrorPage />,
         },
         {
             path: "/reddit",
             element: <RedditSubPage />,
+            errorElement: <ErrorPage />,
+        },
+        {
+            path: "/youtube",
+            element: <YoutubeSubPage />,
         },
     ]);
 

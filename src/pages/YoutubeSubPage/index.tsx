@@ -1,10 +1,9 @@
 import Layout from "../../components/Layout";
-import DCinside from "../../components/SubPage/DCinside";
 import Youtube from "../../components/SubPage/Youtube";
-import useGetPostInfiniteScrollQuery from "../../query/useGetPostInfiniteScrollQuery";
+import useGetVideosInfiniteScrollQuery from "../../query/useGetVideosInfiniteScrollQuery";
 
 const YoutubeSubPage = () => {
-    const scrollQueryProps = useGetPostInfiniteScrollQuery("DC_INSIDE");
+    const scrollQueryProps = useGetVideosInfiniteScrollQuery();
 
     return <Layout>{!scrollQueryProps.getIsLoading && <Youtube {...scrollQueryProps} />}</Layout>;
 };
