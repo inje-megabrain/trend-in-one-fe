@@ -8,7 +8,7 @@ type Props = {
 const getSpecificCommunityPosts = async ({ communityTitle, pageParam = 1 }: Props) => {
     try {
         const result = await axios.get(
-            `http://${process.env.REACT_APP_API_URL}/posts/${communityTitle}?page=${pageParam}&limit=10`,
+            `http://${process.env.REACT_APP_API_URL}/content/posts/${communityTitle}?page=${pageParam}&limit=10`,
         );
         return {
             post_page: result.data.items,
