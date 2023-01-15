@@ -25,29 +25,29 @@ const PostCard = ({ post }: Props) => {
                 </Grid>
                 <Grid item xs={8} sx={{ display: "flex", alignItems: "center" }}>
                     <div>
-                        <h2 className="name text-dark">{post.title}</h2>
+                        <h3 className="name text-dark">{post.title}</h3>
                         <span>{post.uploadedAt.toLocaleString()}</span>
                     </div>
                 </Grid>
                 <Grid
                     item
                     xs={1.5}
+                    display={{ xs: "none", md: "flex" }}
                     sx={{
-                        display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
                     }}
                 >
-                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center", ml: 2 }}>
+                    <Grid item md xs={8} sx={{ display: "flex", alignItems: "center", ml: 2 }}>
                         <div>
                             {post.views && (
                                 <Typography>
-                                    <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.views}
+                                    <VisibilityIcon fontSize="small" sx={{ verticalAlign: "middle" }} /> {post.views}
                                 </Typography>
                             )}
                             {post.likes && (
                                 <Typography>
-                                    <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} />:{post.likes}
+                                    <FavoriteIcon fontSize="small" sx={{ verticalAlign: "middle" }} /> {post.likes}
                                 </Typography>
                             )}
                         </div>
