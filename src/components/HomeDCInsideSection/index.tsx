@@ -4,8 +4,13 @@ import { Post } from "../../types/post.d";
 import HomeBanner from "../HomeBanner";
 import MiniPostCard from "../MiniPostCard";
 
-const HomeDCInsideSection = () => {
-    const { data, isLoading, isFetched } = useGetSpecificCommunityPosts("DC_INSIDE");
+type Props = {
+    data: any;
+    isLoading: boolean;
+    isFetched: boolean;
+};
+
+const HomeDCInsideSection = ({ data, isLoading, isFetched }: Props) => {
     return (
         <div>
             <HomeBanner communityTitle="DC Inside" url="dcinside" />
