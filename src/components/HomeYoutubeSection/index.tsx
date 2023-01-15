@@ -1,11 +1,15 @@
 import { Box } from "@mui/material";
-import useGetVideos from "../../query/useGetVideos";
 import { Video } from "../../types/post.d";
 import HomeBanner from "../HomeBanner";
 import MiniVideoCard from "../MiniVideoCard";
 
-const HomeYoutubeSection = () => {
-    const { data, isLoading, isFetched } = useGetVideos();
+type Props = {
+    data: any;
+    isLoading: boolean;
+    isFetched: boolean;
+};
+
+const HomeYoutubeSection = ({ data, isLoading, isFetched }: Props) => {
     return (
         <div>
             <HomeBanner communityTitle="Youtube" url="youtube" />

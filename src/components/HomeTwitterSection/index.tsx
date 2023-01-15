@@ -1,11 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import useGetTwitterTags from "../../query/useGetTwitterTags";
 import { TwitterTag } from "../../types/post.d";
 import HomeBanner from "../HomeBanner";
 import TwitterTagCard from "../TwitterTagCard";
 
-const HomeTwitterSection = () => {
-    const { data, isLoading, isFetched } = useGetTwitterTags();
+type Props = {
+    data: any;
+    isLoading: boolean;
+    isFetched: boolean;
+};
+
+const HomeTwitterSection = ({ data, isLoading, isFetched }: Props) => {
     return (
         <div>
             <HomeBanner communityTitle="Twitter" subTitle="현재 트랜드" />

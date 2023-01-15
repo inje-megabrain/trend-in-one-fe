@@ -22,7 +22,6 @@ type Props = {
 const Youtube = ({ getVideo, getNextVideo, getVideoIsSuccess, getNextVideoIsPossible }: Props) => {
     const [ref, isView] = useInView();
     useEffect(() => {
-        console.log(isView, getNextVideoIsPossible);
         if (isView && getNextVideoIsPossible) {
             getNextVideo();
         }
@@ -40,14 +39,13 @@ const Youtube = ({ getVideo, getNextVideo, getVideoIsSuccess, getNextVideoIsPoss
                         return post_page.map((item: Video, index: number) => {
                             if (getVideo.pages.length - 1 == page_num && post_page.length - 1 == index) {
                                 return (
-                                    // ?
-                                    <Grid item ref={ref} key={item.id} xs={4}>
+                                    <Grid item ref={ref} key={item.id} md={4} xs={6}>
                                         <ThumbnailCard video={item} />
                                     </Grid>
                                 );
                             } else {
                                 return (
-                                    <Grid item key={item.id} xs={4}>
+                                    <Grid item key={item.id} md={4} xs={6}>
                                         <ThumbnailCard video={item} />
                                     </Grid>
                                 );

@@ -1,11 +1,15 @@
 import { Box } from "@mui/material";
-import useGetSpecificCommunityPosts from "../../query/useGetSpecificCommunityPosts";
 import { Post } from "../../types/post.d";
 import HomeBanner from "../HomeBanner";
 import MiniPostCard from "../MiniPostCard";
 
-const HomeRedditSection = () => {
-    const { data, isLoading, isFetched } = useGetSpecificCommunityPosts("REDDIT");
+type Props = {
+    data: any;
+    isLoading: boolean;
+    isFetched: boolean;
+};
+
+const HomeRedditSection = ({ data, isLoading, isFetched }: Props) => {
     return (
         <div>
             <HomeBanner communityTitle="Reddit" url="reddit" />
