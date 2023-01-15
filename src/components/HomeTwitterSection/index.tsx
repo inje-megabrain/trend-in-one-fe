@@ -5,12 +5,13 @@ import HomeBanner from "../HomeBanner";
 import TwitterTagCard from "../TwitterTagCard";
 
 const HomeTwitterSection = () => {
-    const { data, isLoading } = useGetTwitterTags();
+    const { data, isLoading, isFetched } = useGetTwitterTags();
     return (
         <div>
-            <HomeBanner communityTitle="Twitter" subTitle="(현재 트렌드)" />
+            <HomeBanner communityTitle="Twitter" subTitle="현재 트랜드" />
             <Box sx={{ pl: 1, pr: 1 }}>
                 {!isLoading &&
+                    isFetched &&
                     data
                         .slice(0, 4)
                         .map((post: TwitterTag, index: number) => (

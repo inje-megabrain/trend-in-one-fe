@@ -1,7 +1,7 @@
 const ImageSelector = ({ communityTitle }: { communityTitle: string }) => {
     return (
         <>
-            {communityTitle == "Reddit" ? (
+            {communityTitle == "REDDIT" ? (
                 <img
                     src="assets/images/reddit-logo.webp"
                     style={{
@@ -12,7 +12,7 @@ const ImageSelector = ({ communityTitle }: { communityTitle: string }) => {
                         display: "block",
                     }}
                 ></img>
-            ) : communityTitle == "DC Inside" ? (
+            ) : communityTitle == "DC_INSIDE" ? (
                 <img
                     src="assets/images/dcinside-logo.webp"
                     style={{

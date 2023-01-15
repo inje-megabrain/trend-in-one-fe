@@ -1,14 +1,14 @@
 import { useInfiniteQuery } from "react-query";
-import getPosts from "../api/getPosts";
+import getREDDITPosts from "../api/getREDDITPosts";
 
-const useGetPostInfiniteScrollQuery = () => {
+const useGetREDDITInfiniteScrollQuery = () => {
     const {
         data: getPost,
         fetchNextPage: getNextPage,
         isSuccess: getPostIsSuccess,
         hasNextPage: getNextPageIsPossible,
         isLoading: getIsLoading,
-    } = useInfiniteQuery(["page_post_list"], getPosts, {
+    } = useInfiniteQuery(["page_post_list"], getREDDITPosts, {
         getNextPageParam: (value) => {
             const isLastPage = value.current_page == value.totalPages;
             if (!isLastPage) return value.current_page + 1;
@@ -19,4 +19,4 @@ const useGetPostInfiniteScrollQuery = () => {
     return { getPost, getNextPage, getPostIsSuccess, getNextPageIsPossible, getIsLoading };
 };
 
-export default useGetPostInfiniteScrollQuery;
+export default useGetREDDITInfiniteScrollQuery;

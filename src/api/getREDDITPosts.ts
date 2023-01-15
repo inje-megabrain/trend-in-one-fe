@@ -1,14 +1,13 @@
 import axios from "axios";
 
 type Props = {
-    communityTitle: string;
     pageParam?: number;
 };
 
-const getSpecificCommunityPosts = async ({ communityTitle, pageParam = 1 }: Props) => {
+const getREDDITPosts = async ({ pageParam = 1 }: Props) => {
     try {
         const result = await axios.get(
-            `http://${process.env.REACT_APP_API_URL}/content/posts/${communityTitle}?page=${pageParam}&limit=10`,
+            `http://${process.env.REACT_APP_API_URL}/content/posts/REDDIT?page=${pageParam}&limit=10`,
         );
         return {
             post_page: result.data.items,
@@ -20,4 +19,4 @@ const getSpecificCommunityPosts = async ({ communityTitle, pageParam = 1 }: Prop
     }
 };
 
-export default getSpecificCommunityPosts;
+export default getREDDITPosts;
