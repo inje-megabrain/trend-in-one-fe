@@ -10,6 +10,8 @@ import DCinsideSubPage from "./pages/DCinsideSubPage";
 import RedditSubPage from "./pages/RedditSubPage";
 import ErrorPage from "./pages/404";
 import YoutubeSubPage from "./pages/YoutubeSubPage";
+import LoginPage from "./pages/LoginPage";
+import KakaoLogin from "./pages/LoginPage/KakaoLogin";
 
 export default function App() {
     const [toggleDark, settoggleDark] = useAtom(darkModeAtom);
@@ -20,6 +22,15 @@ export default function App() {
             path: "/",
             element: <Home />,
             errorElement: <ErrorPage />,
+        },
+        {
+            path: "/login",
+            element: <LoginPage />,
+            errorElement: <ErrorPage />,
+        },
+        {
+            path: "/kakaologin",
+            element: <KakaoLogin />,
         },
         {
             path: "/trends",

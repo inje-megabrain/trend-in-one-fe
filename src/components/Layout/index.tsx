@@ -27,7 +27,7 @@ const navItems = [
     { title: "Trends", url: "/trends" },
 ];
 
-const useStyles = makeStyles(
+export const useStyles = makeStyles(
     (theme: {
         palette: { background: { default: any } };
         breakpoints: { down: (arg0: string) => any };
@@ -81,36 +81,54 @@ const Layout = (props: Props) => {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }} className={classes.root}>
+        <Box sx={{ flexDirection: "column", minHeight: "100vh" }} className={classes.root}>
             <AppBar component="nav" color="default">
                 <Container maxWidth="lg">
                     <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: "none" } }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ mr: 4, display: { xs: "none", sm: "block" } }}>
-                            Trend In One
-                        </Typography>
-                        <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                            {navItems.map((item) => (
-                                <Button
-                                    key={item.title}
-                                    color="inherit"
-                                    onClick={() => {
-                                        handleOnClick(item.url);
-                                    }}
-                                >
-                                    {item.title}
-                                </Button>
-                            ))}
+                        <Box sx={{ display: "flex", flexGrow: 1 }}>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                edge="start"
+                                onClick={handleDrawerToggle}
+                                sx={{ mr: 2, display: { sm: "none" } }}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography
+                                variant="h6"
+                                component="div"
+                                sx={{ mr: 4, display: { xs: "none", sm: "block" } }}
+                            >
+                                Trend In One
+                            </Typography>
+                            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                                {navItems.map((item) => (
+                                    <Button
+                                        key={item.title}
+                                        color="inherit"
+                                        onClick={() => {
+                                            handleOnClick(item.url);
+                                        }}
+                                    >
+                                        {item.title}
+                                    </Button>
+                                ))}
+                            </Box>
+
+                            <DarkmodeToggle />
                         </Box>
-                        <DarkmodeToggle />
+                        <Box sx={{ display: "flex", flexGrow: 0 }}>
+                            <Button
+                                variant="contained"
+                                sx={{ pl: 3, pr: 3 }}
+                                onClick={() => {
+                                    handleOnClick("/login");
+                                }}
+                            >
+                                로그인
+                            </Button>
+                        </Box>
                     </Toolbar>
                 </Container>
             </AppBar>
