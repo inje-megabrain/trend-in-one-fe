@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+<br />
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h1 align="center">Trend In One Front-End</h3>
 
-## Available Scripts
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=ts,react,materialui,emotion">
+    <br />
+    <br />
+    <strong>Skill: Typescript, React, Material-UI, Emotion, Jotai, React-Query	</strong>
 
-In the project directory, you can run:
+  </p>
+</div>
 
-### `npm start`
+<br/>
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About The Project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+여러 사이트의 게시글을 크롤링 / OPEN API를 이용함으로써 한 눈에 글로벌 트렌드를 확인 할 수 있는 가치를 제공합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 
 
-### `npm run build`
+- 레딧, dcinside, 4chan 등의 각 국의 사용자가 많은 커뮤니티의 인기 포스트를 수집
+- 실시간 인기 포스트 제공
+- 본인의 관심사 필터링
+- 특정 기준을 통한 인기글 정렬
+- 특정 커뮤니티 인기글 보기
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Front View
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src='readme_images/ui_image.png' width="500px">
+<br /><br />
+<img src='readme_images/youtube_image.jpg' width="500px">
+<br /><br />
+<img src='readme_images/login_image.jpg' width="500px">
