@@ -33,6 +33,6 @@
 
 <img src='readme_images/ui_image.png' width="500px">
 <br /><br />
-<img src='readme_images/youtube_image.jpg' width="500px">
+<img src='readme_images/youtube_image.JPG' width="500px">
 <br /><br />
-<img src='readme_images/login_image.jpg' width="500px">
+<img src='readme_images/login_image.JPG' width="500px">
